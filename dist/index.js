@@ -17,7 +17,7 @@ var drawPointsToScreen = function (points) {
                 process.stdout.write(" @ ");
             }
             else {
-                process.stdout.write(" * ");
+                process.stdout.write(" . ");
             }
         };
         for (var col = 0; col < 20; col++) {

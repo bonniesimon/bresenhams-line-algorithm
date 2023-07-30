@@ -11,7 +11,7 @@ const drawPointsToScreen = (points: Point[]) => {
       if (shouldDrawPoint){
         process.stdout.write(" @ ");
       } else {
-        process.stdout.write(" * ");
+        process.stdout.write(" . ");
       }
     }
     console.log("");
