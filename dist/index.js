@@ -57,7 +57,6 @@ var main = function () {
     var start = { x: 1, y: 1 };
     var end = { x: 10, y: 10 };
     var line = bresenham(start, end);
-    console.log(line);
     drawPointsToScreen(line);
 };
 main();

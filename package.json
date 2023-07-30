@@ -6,6 +6,9 @@
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "output": "tsc index.ts --outFile dist/index.js && node dist/index.js"
+  },
   "dependencies": {
     "ts-node": "^10.9.1"
   }
