@@ -9,12 +9,10 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var logs = [];
 var drawPointsToScreen = function (points) {
     var _loop_1 = function (row) {
         var _loop_2 = function (col) {
             var shouldDrawPoint = points.some(function (point) { return (point.x === row && point.y === col); });
-            // logs.push(`currentPoint: ${row}, ${col}     shouldDrowPoint: ${shouldDrawPoint}`);
             if (shouldDrawPoint) {
                 process.stdout.write(" @ ");
             }
@@ -30,7 +28,6 @@ var drawPointsToScreen = function (points) {
     for (var row = 20; row >= 0; row--) {
         _loop_1(row);
     }
-    logs.forEach(function (log) { return console.log(log); });
 };
 var bresenham = function (p1, p2) {
     var dx = p2.x - p1.x;
@@ -38,7 +35,7 @@ var bresenham = function (p1, p2) {
     var pk = 2 * dy - dx;
     var pointNew = p1;
     var line = [__assign({}, p1)];
-    while (pointNew.x !== p2.x && pointNew.y !== p2.y) {
+    while (pointNew.x !== p2.x || pointNew.y !== p2.y) {
         if (pk < 0) {
             pk = pk + 2 * dy;
             pointNew.x = pointNew.x + 1;
@@ -54,8 +51,8 @@ var bresenham = function (p1, p2) {
     return line;
 };
 var main = function () {
-    var start = { x: 1, y: 1 };
-    var end = { x: 10, y: 10 };
+    var start = { x: 3, y: 2 };
+    var end = { x: 18, y: 16 };
     var line = bresenham(start, end);
     drawPointsToScreen(line);
 };

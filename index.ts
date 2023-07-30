@@ -3,13 +3,11 @@ type Point = {
   y: number;
 };
 
-let logs: string[] = [];
 
 const drawPointsToScreen = (points: Point[]) => {
   for(let row=20; row>=0; row--){
     for(let col= 0; col<20; col++){
       const shouldDrawPoint = points.some(point => (point.x === row && point.y === col));
-      // logs.push(`currentPoint: ${row}, ${col}     shouldDrowPoint: ${shouldDrawPoint}`);
       if (shouldDrawPoint){
         process.stdout.write(" @ ");
       } else {
@@ -18,8 +16,6 @@ const drawPointsToScreen = (points: Point[]) => {
     }
     console.log("");
   }
-
-  logs.forEach(log => console.log(log));
 }
 
 const bresenham = (p1: Point, p2: Point) => {
@@ -31,7 +27,7 @@ const bresenham = (p1: Point, p2: Point) => {
 
   let line: Point[] = [{...p1}];
 
-  while(pointNew.x !== p2.x && pointNew.y !== p2.y){
+  while(pointNew.x !== p2.x || pointNew.y !== p2.y){
     if(pk < 0){
       pk = pk + 2 * dy;
       pointNew.x = pointNew.x + 1;
@@ -49,8 +45,8 @@ const bresenham = (p1: Point, p2: Point) => {
 }
 
 const main = () => {
-  const start: Point = {x: 1, y: 1};
-  const end: Point = {x: 10, y: 10};
+  const start: Point = {x: 3, y: 2};
+  const end: Point = {x: 18, y: 16};
 
   const line: Point[] = bresenham(start, end);
 
